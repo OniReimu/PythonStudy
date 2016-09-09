@@ -27,9 +27,9 @@ def dmiDic():
     data = getDmi()
     lines = parseDmi(data)
     dic = dict([i.strip().split(':') for i in lines])
-    dmi_dic['vendor'] = dic['Manufacturer']
-    dmi_dic['product'] = dic['Product Name']
-    dmi_dic['sn'] = dic['Serial Number']
+    dmi_dic['Manufacturer'] = dic['Manufacturer'].strip()
+    dmi_dic['Product Name'] = dic['Product Name'].strip()
+    dmi_dic['Serial Number'] = dic['Serial Number'].strip()
     return dmi_dic
 
 if __name__ == '__main__':
