@@ -30,8 +30,11 @@ def parseIfconfig(data):
         ipaddr = line_list[1].split()[1].split(':')[1]
         dic[devname] = [ipaddr, macaddr]
     return dic
-        
-if __name__ == '__main__':
+
+def main():
     data = getIP()
     data_list = genIP(data)
-    print parseIfconfig(data_list) 
+    return parseIfconfig(data_list)
+
+if __name__ == '__main__':
+    print main()
