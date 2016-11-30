@@ -1,0 +1,19 @@
+db:
+  image: mysql:5.6
+  expose:
+    - "3306"
+  volumes:
+    - ./db:/var/lib/mysql
+  environment:
+    - MYSQL_DATABASE=mysitedb
+    - MYSQL_ROOT_PASSWORD=256421nod
+
+web:
+  build: .
+  command: sh -c "/etc/service/django/djangoini.sh; python /etc/service/django/manage.py runserver 0.0.0.0:8000; tail -F /etc/hosts"
+  volumes:
+    - .:/code
+  ports:
+    - "8000:8000"
+  links:
+    - db
